@@ -10,7 +10,7 @@ python -m pip install -r requirements.txt
 
 ## Notebook interactivo
 
-Abrir `notebooks/parte5.ipynb` en VS Code o Jupyter y ejecutar las celdas en orden. El notebook utiliza `ipywidgets` para los filtros y Plotly para las visualizaciones.
+Abrir `notebooks/Notebook.ipynb` en VS Code o Jupyter y ejecutar las celdas en orden. El notebook utiliza `ipywidgets` para los filtros y Plotly para las visualizaciones. En este notebook encontraran el paso a paso del analisis realizado, esta separado por secciones para que sea más facil comprenderlo.
 
 ## Aplicación web
 
