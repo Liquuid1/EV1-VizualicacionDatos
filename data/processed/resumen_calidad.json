@@ -1,0 +1,32 @@
+{
+  "source_rows": 32000,
+  "contents": 31991,
+  "movies": 16000,
+  "series": 15991,
+  "removed_duplicate_rows": 9,
+  "duplicate_groups": 9,
+  "cross_type_shared_ids": 397,
+  "genre_associations": 66967,
+  "country_associations": 39889,
+  "valid_ratings": 27427,
+  "valid_financials": 3540,
+  "budget_review_required": 55,
+  "rating_equals_vote_average_source_rows": 32000,
+  "date_year_equals_release_year_source_rows": 32000,
+  "release_year_min": 2010,
+  "release_year_max": 2025,
+  "budget_review_threshold": 1000,
+  "minimum_votes_for_rating_rank": 100,
+  "sources": [
+    {
+      "file": "netflix_movies_detailed_up_to_2025.csv",
+      "sha256": "5439bcc05ccc4c170265a88e115891adecef64a330060dbd55266ac7fea14613",
+      "rows": 16000
+    },
+    {
+      "file": "netflix_tv_shows_detailed_up_to_2025.csv",
+      "sha256": "16156fb21d0139a396b3a72cd58d66f86d272f7607df9281c2abfe68f59f80d7",
+      "rows": 16000
+    }
+  ]
+}

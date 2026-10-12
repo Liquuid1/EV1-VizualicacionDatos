@@ -1,0 +1,7 @@
+{
+  "name": "StreamView Analytics",
+  "dataColors": ["#2563EB", "#047857", "#B45309", "#7C3AED", "#0E7490", "#BE185D"],
+  "background": "#F8FAFC",
+  "foreground": "#172033",
+  "tableAccent": "#2563EB"
+}

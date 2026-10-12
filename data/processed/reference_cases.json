@@ -1,0 +1,55 @@
+{
+  "catalogo_completo": {},
+  "peliculas": {
+    "type": "Movie"
+  },
+  "series": {
+    "type": "TV Show"
+  },
+  "drama": {
+    "genres": [
+      "Drama"
+    ]
+  },
+  "japon": {
+    "countries": [
+      "Japan"
+    ]
+  },
+  "drama_japon": {
+    "genres": [
+      "Drama"
+    ],
+    "countries": [
+      "Japan"
+    ]
+  },
+  "drama_comedy_japon": {
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "countries": [
+      "Japan"
+    ]
+  },
+  "estrenos_2020_2025": {
+    "years": [
+      2020,
+      2025
+    ]
+  },
+  "presupuesto_en_revision": {
+    "review": true
+  },
+  "peliculas_ingles": {
+    "type": "Movie",
+    "language": "en"
+  },
+  "segmento_vacio": {
+    "years": [
+      1900,
+      1901
+    ]
+  }
+}

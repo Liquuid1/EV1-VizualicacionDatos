@@ -1,0 +1,64 @@
+// Crear cada medida por separado en catalogo. No ejecutar todo como consulta.
+// Sintaxis con comas; adaptar separadores si la instalación usa punto y coma.
+
+Total contenidos = COALESCE(DISTINCTCOUNT(catalogo[content_id]), 0)
+
+Peliculas = CALCULATE([Total contenidos], KEEPFILTERS(catalogo[type] = "Movie"))
+
+Series = CALCULATE([Total contenidos], KEEPFILTERS(catalogo[type] = "TV Show"))
+
+Porcentaje peliculas = DIVIDE([Peliculas], [Total contenidos])
+
+Popularidad mediana = MEDIAN(catalogo[popularity])
+
+Contenidos con valoracion =
+CALCULATE([Total contenidos], KEEPFILTERS(catalogo[has_valid_rating] = TRUE()))
+
+Valoracion promedio valida =
+CALCULATE(AVERAGE(catalogo[vote_average]), KEEPFILTERS(catalogo[has_valid_rating] = TRUE()))
+
+Cobertura valoracion = DIVIDE([Contenidos con valoracion], [Total contenidos])
+
+Votos registrados = SUM(catalogo[vote_count])
+
+Contenidos elegibles ranking =
+CALCULATE([Total contenidos], KEEPFILTERS(catalogo[rating_rank_eligible] = TRUE()))
+
+Peliculas con datos financieros =
+CALCULATE([Total contenidos], KEEPFILTERS(catalogo[has_valid_financials] = TRUE()))
+
+Cobertura financiera peliculas = DIVIDE([Peliculas con datos financieros], [Peliculas])
+
+Ingresos poblacion valida =
+CALCULATE(SUM(catalogo[revenue]), KEEPFILTERS(catalogo[has_valid_financials] = TRUE()))
+
+Presupuesto poblacion valida =
+CALCULATE(SUM(catalogo[budget]), KEEPFILTERS(catalogo[has_valid_financials] = TRUE()))
+
+Presupuesto promedio valido =
+CALCULATE(AVERAGE(catalogo[budget]), KEEPFILTERS(catalogo[has_valid_financials] = TRUE()))
+
+Ingresos presupuesto veces = DIVIDE([Ingresos poblacion valida], [Presupuesto poblacion valida])
+
+Peliculas presupuesto en revision =
+CALCULATE([Total contenidos], KEEPFILTERS(catalogo[budget_review_required] = TRUE()))
+
+Peliculas financieras en revision =
+CALCULATE([Peliculas con datos financieros], KEEPFILTERS(catalogo[budget_review_required] = TRUE()))
+
+Generos presentes =
+COALESCE(COUNTROWS(FILTER(VALUES(contenido_genero[genre_id]),
+    LOOKUPVALUE(dim_generos[genre], dim_generos[genre_id], contenido_genero[genre_id]) <> "Sin información")), 0)
+
+Paises presentes =
+COALESCE(COUNTROWS(FILTER(VALUES(contenido_pais[country_id]),
+    LOOKUPVALUE(dim_paises[country], dim_paises[country_id], contenido_pais[country_id]) <> "Sin información")), 0)
+
+Idiomas presentes =
+COALESCE(COUNTROWS(FILTER(VALUES(catalogo[language]),
+    NOT ISBLANK(catalogo[language]) && catalogo[language] <> "Sin información")), 0)
+
+Popularidad genero con muestra suficiente =
+IF([Total contenidos] >= 25 && SELECTEDVALUE(dim_generos[genre]) <> "Sin información", [Popularidad mediana])
+
+Mostrar contenido = IF([Total contenidos] > 0, 1, 0)
