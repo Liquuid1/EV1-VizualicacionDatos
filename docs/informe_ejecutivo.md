@@ -9,9 +9,8 @@
 **Profesor:** Oscar Oliva
 **Fecha de elaboración:** 12/10/2026
 **Entrega:** Encargo EP3 y apoyo a la presentación y defensa EP4
-**Estado:** Borrador con preparación y análisis verificados en Python; implementación y validación de Power BI pendientes.
+**Estado:** Informe final con preparación y análisis de datos verificados en Python, dashboard interactivo implementado en Power BI y pruebas funcionales realizadas.
 
-> **INSTRUCCIÓN DE EDICIÓN — RETIRAR ANTES DE ENTREGAR:** Todos los bloques identificados como **[PENDIENTE POWER BI — PBxx]** deben completarse con evidencia del archivo construido. No reemplazar esos bloques por afirmaciones de cumplimiento sin verificar. Las instrucciones de edición y el estado de borrador se retiran al cerrar el informe. Confirmar integrantes y fecha final de entrega.
 
 ## Resumen ejecutivo
 
@@ -21,9 +20,8 @@ La base corregida contiene **31.991 contenidos**, distribuidos en **16.000 pelí
 
 Drama es el género más representado, con 14.769 títulos asociados. Sin embargo, las categorías con mayor popularidad típica difieren de las más abundantes, lo que justifica separar composición y desempeño. La valoración válida promedio es **6,63 sobre 10**, con cobertura del **85,7 %** del catálogo. Solo **3.540 películas**, equivalentes al **22,1 %** de las películas, disponen de presupuesto e ingresos positivos.
 
-El diseño propone cuatro páginas: Resumen, Catálogo, Popularidad y valoración, y Finanzas de películas. La recomendación principal es utilizar la solución para seleccionar segmentos y títulos que ameriten revisión, acompañando cada indicador con sus restricciones. Los datos no permiten medir retención, reproducciones, comportamiento individual de usuarios ni rentabilidad de StreamView.
+El dashboard implementado en Power BI cuenta con cuatro páginas: Resumen del catálogo, Exploración del catálogo, Popularidad y valoración, y Finanzas de películas. Las pruebas realizadas confirmaron el funcionamiento de filtros individuales y combinados, la actualización de indicadores y la navegación entre páginas. La solución permite explorar segmentos y seleccionar títulos para revisión, considerando las limitaciones de los datos disponibles. No permite medir retención, reproducciones, comportamiento individual de usuarios ni rentabilidad de StreamView.
 
-> **[PENDIENTE POWER BI — PB01]** Completar este resumen con el estado real del dashboard: páginas efectivamente implementadas, resultado de la validación y una conclusión breve sobre su utilidad comprobada. Hasta entonces, conservar la expresión «el diseño propone».
 
 ## 1. Descripción del problema de negocio
 
@@ -43,9 +41,7 @@ Las decisiones apoyadas son la revisión de géneros y países para adquisicione
 
 ### 2.1 Objetivo general
 
-Preparar y diseñar una solución de Visual Analytics que integre el catálogo de StreamView Analytics y comunique evidencia relevante para decisiones de contenidos, mediante datos reproducibles en Python y un informe interactivo en Power BI.
-
-> **[PENDIENTE POWER BI — PB02]** Una vez terminada y comprobada la solución, actualizar el objetivo y la descripción del alcance para reflejar su implementación efectiva.
+Integrar y analizar el catálogo audiovisual de StreamView Analytics mediante un proceso reproducible de preparación de datos en Python y la implementación de un dashboard interactivo en Power BI, que permita visualizar indicadores relevantes y apoyar la toma de decisiones relacionadas con la gestión de contenidos.
 
 ### 2.2 Objetivos específicos
 
@@ -121,7 +117,8 @@ La composición equilibrada permite contrastar ambos formatos, siempre que las v
 
 *Visualización estática generada en Python sobre el catálogo preparado; no es una captura de Power BI.*
 
-> **[PENDIENTE POWER BI — PB03]** Insertar Figura 1: barras de películas y series con cantidades y alcance. Registrar archivo de imagen y pie: «Fuente: CSV del caso, preparación StreamView en Python y visualización en Power BI». Comprobar concordancia con la tabla anterior.
+![Composición del catálogo](../images/figura_01_distribución_contenido_PowerBi.png)
+**Figura 1: barras de películas y series con cantidades**
 
 ### 5.2 Concentración temática, países e idiomas
 
@@ -147,7 +144,21 @@ Estos resultados describen la oferta disponible en la muestra. Un país de produ
 
 *Los países y géneros admiten asociaciones múltiples; los códigos de idioma conservan las etiquetas de fuente.*
 
-> **[PENDIENTE POWER BI — PB04]** Insertar Figura 2: comparación por género y país, y Figura 3: treemap de idiomas. Identificar Top N, nulos excluidos y filtros utilizados. Añadir pies que adviertan que las categorías de género y país no son aditivas.
+
+![Figura 2. Géneros más representados](../images/figura_02_generos_powerbi.png)
+
+![Figura 2. Países más representados](../images/figura_02_paises_powerbi.png)
+
+**Figura 2. Distribución de contenidos por género y país.**
+
+*Nota: Se presentan las diez categorías más frecuentes de cada dimensión, excluyendo «Sin información». Un contenido puede estar asociado a varios géneros o países, por lo que los valores no son aditivos. Resultados correspondientes al catálogo completo, sin filtros adicionales.*
+
+![Figura 3. Idiomas más representados](../images/figura_03_idiomas_powerbi.png)
+
+**Figura 3. Distribución de contenidos por idioma.**
+
+*Nota: El treemap presenta los diez idiomas más frecuentes, utilizando los códigos originales de la fuente. Resultados sin filtros adicionales.*
+
 
 ### 5.3 Distribución temporal
 
@@ -159,7 +170,12 @@ La visualización temporal debe mostrar la distribución de estrenos de la muest
 
 *Visualización estática generada en Python sobre el catálogo preparado; no es una captura de Power BI.*
 
-> **[PENDIENTE POWER BI — PB05]** Insertar Figura 4: línea «Contenidos por año de estreno», con eje 2010–2025. Evitar interpretar la reducción de nueve registros como caída del negocio.
+![Figura 4. Contenidos por año de estreno](../images/figura_04_estrenos_powerbi.png)
+
+**Figura 4. Distribución de contenidos por año de estreno (2010–2025).**
+
+*Nota: El catálogo contiene 2.000 contenidos por año entre 2010 y 2024, y 1.991 en 2025. Esta distribución corresponde a la muestra analizada y no representa el crecimiento o disminución del catálogo operativo de la plataforma.*
+
 
 ### 5.4 Popularidad y valoración
 
@@ -179,7 +195,24 @@ Los rankings de valoración requieren calificación positiva y al menos 100 voto
 
 *Visualización estática generada en Python sobre el catálogo preparado; no es una captura de Power BI.*
 
-> **[PENDIENTE POWER BI — PB06]** Insertar Figura 5: popularidad mediana por género, con tamaño de muestra. Insertar Figura 6: dispersión de popularidad y valoración. Describir la relación solo después de revisar el gráfico final y su población; no afirmar causalidad ni una correlación estadística no calculada. Añadir ranking final de candidatos con filtros, criterio y votos visibles.
+![Figura 5. Popularidad mediana por género](../images/figura_05_popularidad_generos_powerbi.png)
+
+**Figura 5. Popularidad mediana por género.**
+
+*Nota: Se presentan los diez géneros con mayor popularidad mediana, considerando únicamente categorías con al menos 25 contenidos y excluyendo «Sin información». Los géneros pueden compartir contenidos.*
+
+![Figura 6. Popularidad y valoración](../images/figura_06_popularidad_valoracion_powerbi.png)
+
+**Figura 6. Relación entre popularidad y valoración de contenidos.**
+
+*Nota: La visualización permite explorar la distribución de popularidad y valoración, incluyendo valores extremos. No establece relaciones causales.*
+
+![Ranking de títulos mejor valorados](../images/figura_06_ranking_valoracion_powerbi.png)
+
+**Tabla 1. Ranking de títulos mejor valorados.**
+
+*Nota: El ranking considera títulos con valoración positiva y un mínimo de 100 votos registrados.*
+
 
 ### 5.5 Finanzas y anomalías
 
@@ -189,7 +222,18 @@ Esta razón no equivale al promedio de razones por película, ni representa bene
 
 De las 55 películas con presupuesto marcado para revisión, diez pertenecen a la población financiera válida. En esas diez, los presupuestos suman 925 y los ingresos 15.009.450, generando una razón agregada de 16.226,43 veces. Este resultado ilustra por qué los retornos extremos requieren revisión y no deben convertirse directamente en recomendaciones de inversión. El umbral de 1.000 es una alerta analítica del equipo, no una regla impuesta por la pauta ni evidencia definitiva de error.
 
-> **[PENDIENTE POWER BI — PB07]** Insertar Figura 7: dispersión de presupuesto e ingresos y tabla de razones por título, con alertas. Confirmar cobertura general de 22,1 % y que la página no filtre globalmente solo películas válidas, lo que falsearía el denominador de cobertura. Documentar la selección y la unidad sin agregar símbolo monetario.
+![Figura 7. Presupuesto e ingresos de películas](../images/figura_07_presupuesto_ingresos_powerbi.png)
+
+**Figura 7. Relación entre presupuesto e ingresos de películas.**
+
+*Nota: El gráfico permite explorar la distribución de presupuestos e ingresos, así como identificar valores extremos. Las cantidades corresponden a unidades monetarias no documentadas en la fuente y no representan ingresos de StreamView.*
+
+![Tabla de relación ingresos y presupuesto](../images/figura_07_relacion_financiera_powerbi.png)
+
+**Tabla 2. Relación entre ingresos y presupuesto por película.**
+
+*Nota: Se presentan los valores de presupuesto, ingresos y su relación por película. La razón ingresos/presupuesto no equivale a rentabilidad neta.*
+
 
 ## 6. Justificación de las representaciones gráficas
 
@@ -204,7 +248,7 @@ De las 55 películas con presupuesto marcado para revisión, diez pertenecen a l
 
 Se propone fondo claro, tipografía legible, títulos directos y colores consistentes: azul para películas, verde para series y naranja para alertas. Las advertencias incluyen texto para no depender exclusivamente del color. La jerarquía separa síntesis, comparación y detalle. Las leyendas, escalas y títulos deben evitar ambigüedades.
 
-> **[PENDIENTE POWER BI — PB08]** Actualizar esta tabla con los gráficos realmente utilizados. Justificar cualquier sustitución, agregar evidencia de legibilidad y confirmar que etiquetas, leyendas y colores se mantengan consistentes en el informe y exportaciones.
+Las representaciones descritas fueron implementadas en las cuatro páginas del dashboard. Se utilizaron títulos, etiquetas y notas explicativas para facilitar la interpretación de los indicadores, manteniendo una organización visual coherente con el propósito de cada página.
 
 ## 7. Narrativa visual — Data Storytelling
 
@@ -219,7 +263,19 @@ El mensaje central es: **la priorización del catálogo necesita comparar señal
 
 El recorrido propuesto inicia en Resumen, explora concentración en Catálogo, compara señales en Popularidad y valoración y termina en Finanzas de películas. Así se avanza desde contexto hacia posibles candidatos y restricciones.
 
-> **[PENDIENTE POWER BI — PB09]** Seleccionar un ejemplo real de exploración que conecte filtros, visualizaciones y una recomendación concreta. Registrar selección, cifras y título elegido. No escribir una acción comercial definitiva sin evidencia suficiente.
+
+![Figura 8. Exploración interactiva del catálogo](../images/figura_08_narrativa_visual_powerbi.png)
+
+**Figura 8. Ejemplo de exploración interactiva del catálogo mediante la selección de una película.**
+
+*Fuente: Elaboración propia a partir de capturas y resultados obtenidos en Power BI.*
+
+*Nota: Composición visual recreada a partir de las capturas de Power BI para presentar conjuntamente el ranking, los indicadores KPI y los gráficos relacionados. Los valores del título seleccionado corresponden a los resultados observados en el dashboard.*
+
+Al seleccionar la película *Nude* en el ranking de contenidos, los indicadores muestran una valoración promedio de 9,50, basada en 161 votos, y una popularidad de 27,03.
+
+Esta interacción permite identificar un título con valoración elevada y examinar sus indicadores asociados. Se considera un candidato para revisión editorial, aunque su valoración no constituye evidencia suficiente para recomendar automáticamente su adquisición o promoción.
+
 
 ## 8. Diseño e implementación del dashboard interactivo
 
@@ -235,7 +291,11 @@ El modelo utiliza catálogo, dimensiones de género, país y año de estreno, y 
 
 Se definieron 23 medidas DAX. Los filtros de elegibilidad se intersectan con las selecciones actuales para que seleccionar series no devuelva resultados financieros de películas. Los indicadores financieros utilizan la misma población válida en numerador y denominador.
 
-> **[PENDIENTE POWER BI — PB10]** Registrar nombre y versión del archivo PBIX, versión de Power BI utilizada, fecha de actualización y ruta o parámetro de fuentes. Insertar captura del modelo y confirmar cardinalidades, direcciones, tipos y ausencia de relaciones automáticas adicionales. Registrar ajustes reales respecto del diseño.
+![Figura 9. Modelo de datos de Power BI](../images/figura_09_modelo_datos_powerbi.png)
+
+**Figura 9. Modelo de relaciones implementado en Power BI.**
+
+*Nota: La Figura 9 presenta el modelo implementado en Power BI, compuesto por seis tablas y cinco relaciones. Su estructura permite conectar el catálogo con las dimensiones de género, país y año de estreno para aplicar filtros y calcular los indicadores del dashboard.*
 
 ### 8.3 Páginas y funcionalidad prevista
 
@@ -248,7 +308,35 @@ Se definieron 23 medidas DAX. Los filtros de elegibilidad se intersectan con las
 
 Los segmentadores comunes corresponden a tipo, género, país, idioma y año. Las selecciones dentro de una dimensión se combinan como alternativas y entre dimensiones por intersección. El diseño incorpora navegación entre páginas, sincronización de segmentadores, filtrado entre gráficos y limpieza de selecciones. El filtro de revisión financiera se limita a su página.
 
-> **[PENDIENTE POWER BI — PB11]** Insertar capturas de las cuatro páginas implementadas. Describir qué filtros se sincronizan, qué interacción ocurre al seleccionar una barra, cómo se navega y cómo se restablece el estado. Confirmar que los segmentos vacíos muestran conteos cero y métricas sin datos, y que no existen filtros ocultos que alteren resultados.
+
+![Página Resumen del catálogo](../images/figura_10_resumen_dashboard_powerbi.png)
+
+**Figura 10. Página Resumen del catálogo.**
+
+![Página Exploración del catálogo](../images/figura_11_exploracion_catalogo_powerbi.png)
+
+**Figura 11. Página Exploración del catálogo.**
+
+![Página Popularidad y valoración](../images/figura_12_popularidad_valoracion_powerbi.png)
+
+**Figura 12. Página Popularidad y valoración.**
+
+![Página Finanzas de películas](../images/figura_13_finanzas_peliculas_powerbi.png)
+
+**Figura 13. Página Finanzas de películas.**
+
+*Nota: Las cuatro páginas presentan indicadores, gráficos, tablas y segmentadores que permiten explorar distintas dimensiones del catálogo audiovisual.*
+
+#### Interactividad y navegación
+
+El dashboard está organizado en cuatro páginas temáticas que permiten explorar la composición del catálogo, sus características, los indicadores de popularidad y valoración, y la información financiera de las películas.
+
+Las páginas incorporan segmentadores por tipo de contenido, género, país y año de estreno. La página de exploración del catálogo también incluye un segmentador por idioma. Estos controles permiten seleccionar categorías y analizar subconjuntos de información.
+
+La interacción entre visualizaciones se comprobó mediante la selección de la película *Nude* en el ranking de títulos mejor valorados. Esta acción actualizó las tarjetas KPI y el gráfico de dispersión, mientras que el gráfico de popularidad por género presentó una atenuación visual.
+
+La navegación se realiza mediante las cuatro páginas del informe en Power BI. Los segmentadores permiten modificar las selecciones y utilizar sus controles de limpieza para retirar los filtros aplicados.
+
 
 ### 8.4 Reproducibilidad y validación
 
@@ -264,9 +352,9 @@ El proyecto incluye dos scripts: `src/main.py` prepara las tablas y `src/referen
 
 Estos controles validan la preparación y ofrecen resultados esperados. No demuestran que las relaciones y las medidas se hayan ejecutado correctamente en Power BI.
 
-> **[PENDIENTE POWER BI — PB12]** Comparar los once escenarios de `referencia_kpis.csv` con el PBIX. Añadir tabla de esperado/obtenido/resultado, evidencia de los filtros usados y explicación de diferencias. Registrar pruebas de navegación, filtros combinados, ausencia de datos y selección de series en Finanzas. Indicar quién verificó y en qué fecha.
+Se contrastaron los indicadores generales del dashboard con los valores de referencia, comprobando coincidencias en el catálogo completo, la selección de series y la combinación de Drama con Japón. También se verificó el funcionamiento de filtros combinados, selección múltiple y navegación entre páginas. Los demás escenarios quedan disponibles en `referencia_kpis.csv` para su validación individual.
 
-> **[PENDIENTE POWER BI — PB13]** Registrar exportaciones finales, calidad de capturas, legibilidad del PDF y prueba de apertura y actualización del proyecto en el PC de entrega. Comprobar que los productos estén completos y documentados; no declarar publicación en línea si no se realizó.
+El proyecto incluye el informe ejecutivo, las capturas de las cuatro páginas del dashboard, los scripts de procesamiento y los archivos de referencia. Como verificación final de entrega, queda pendiente comprobar la apertura y actualización del archivo PBIX en el equipo de destino.
 
 ## 9. Evaluación crítica: fortalezas, limitaciones y mejoras
 
@@ -278,11 +366,11 @@ La clave compuesta corrige la pérdida de contenidos entre fuentes. La conservac
 
 No existen datos de usuarios o consumo, por lo que no se calcula retención ni engagement real. La muestra temporal uniforme limita interpretaciones de evolución. No hay clasificación etaria utilizable y falta duración de películas. Las valoraciones tienen cobertura desigual entre formatos y el mínimo de votos no elimina sesgos. El análisis financiero cubre solo 22,1 % de películas, contiene presupuestos sospechosos y no documenta moneda ni costos adicionales. Los países indican producción, no demanda geográfica.
 
-### 9.3 Evaluación pendiente del producto visual
+### 9.3 Evaluación del producto visual y oportunidades de mejora
 
-> **[PENDIENTE POWER BI — PB14]** Realizar una revisión de uso con ambos integrantes: localizar un segmento, comparar métricas, identificar una alerta y restablecer filtros. Registrar dificultades observadas, claridad de títulos, legibilidad, consistencia y comportamiento de navegación. Describir fortalezas y limitaciones reales del dashboard, evitando calificativos sin evidencia.
+Durante la revisión del dashboard se comprobó la navegación entre páginas, la aplicación de filtros combinados y la actualización de indicadores. Una dificultad identificada fue la selección simultánea de varios géneros, ya que inicialmente no resultaba evidente cómo realizarla. Se resolvió utilizando la tecla Ctrl, permitiendo comparar categorías sin modificar la configuración. Las páginas mantienen una organización temática y presentan indicadores que facilitan la exploración del catálogo.
 
-> **[PENDIENTE POWER BI — PB15]** Documentar al menos las mejoras que resulten necesarias, el problema que resuelven y su estado. Si se aplicó un cambio, incluir antes/después cuando aporte evidencia. Si no se implementó, identificarlo como mejora futura, no como funcionalidad existente.
+La principal dificultad detectada estuvo relacionada con el uso de la selección múltiple en los segmentadores. Se resolvió mediante el procedimiento de selección con Ctrl, sin requerir modificaciones al dashboard. Como mejora futura, se propone incorporar una indicación visual que facilite el descubrimiento de esta función por parte de nuevos usuarios.
 
 ## 10. Conclusiones y recomendaciones
 
@@ -298,7 +386,11 @@ Se recomienda:
 - Mantener el mismo proceso de preparación, medidas y controles para futuras actualizaciones.
 - Completar la evaluación de uso y la validación del PBIX antes de cerrar el informe y la presentación.
 
-> **[PENDIENTE POWER BI — PB16]** Añadir la conclusión final sobre el dashboard efectivamente construido, su utilidad demostrada y recomendaciones específicas derivadas del recorrido validado. Actualizar el resumen ejecutivo y retirar todos los marcadores de edición al finalizar.
+El desarrollo de StreamView Analytics permitió transformar los datos del catálogo audiovisual en un dashboard interactivo de cuatro páginas, facilitando el análisis de contenidos, géneros, países, popularidad, valoraciones e información financiera.
+
+Las pruebas realizadas permitieron comprobar la actualización de indicadores mediante filtros individuales y combinados, así como la navegación entre páginas. Como principal limitación, se identificó la cobertura parcial de los datos financieros, por lo que sus resultados deben interpretarse considerando únicamente las películas con información válida.
+
+Como mejoras futuras, se recomienda facilitar el uso de la selección múltiple y continuar ampliando las verificaciones de los indicadores para fortalecer la experiencia de usuario y la confiabilidad del análisis.
 
 ## Referencias y archivos de respaldo
 
@@ -311,17 +403,3 @@ Se recomienda:
 - `docs/modelo_indicadores.md` y `dashboard/medidas.dax`: relaciones y fórmulas.
 - `docs/guia_construccion_powerbi.md`: especificación de visuales y funcionamiento.
 - `data/processed/resumen_calidad.json`, `calidad_columnas.csv`, `referencia_kpis.csv` y archivos de excepciones: respaldo cuantitativo.
-
-## Anexo de edición — Retirar de la versión final
-
-| Marcador | Evidencia que debe completar la responsable de Power BI |
-| --- | --- |
-| PB01–PB02 | Estado final, alcance y objetivo actualizado. |
-| PB03–PB07 | Gráficos finales, pies, filtros y observaciones verificadas. |
-| PB08–PB09 | Decisiones gráficas finales y ejemplo de narrativa. |
-| PB10–PB11 | Archivo, modelo, páginas e interacciones implementadas. |
-| PB12–PB13 | Comparación de KPIs, pruebas, exportaciones y reproducibilidad. |
-| PB14–PB15 | Evaluación de uso, fortalezas reales y mejoras. |
-| PB16 | Conclusiones finales y actualización del resumen. |
-
-La estructura de diez secciones cubre los apartados mínimos del informe EP3. La evidencia pendiente debe permitir revisar visualizaciones estáticas (IE13), interactividad (IE14), integración de fuentes (IE16), diseño del dashboard (IE17), KPIs (IE18) y organización de productos (IE22). El documento apoya EP4, pero no reemplaza la presentación ni su defensa individual.

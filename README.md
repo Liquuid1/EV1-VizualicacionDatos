@@ -4,9 +4,9 @@ Análisis del catálogo audiovisual para apoyar revisión editorial, adquisició
 
 ## Estado de la entrega
 
-Están preparados los datos, código reproducible, notebook de exploración, gráficos estáticos, indicadores DAX, guía de construcción e informe ejecutivo en Markdown. Quedan pendientes el archivo Power BI, sus comprobaciones y la evidencia que depende de su implementación. El informe es un borrador hasta completar esas partes.
+El proyecto cuenta con datos preparados, código reproducible en Python, notebook de exploración, gráficos estáticos, medidas DAX y un dashboard interactivo implementado en Power BI con cuatro páginas: Resumen del catálogo, Exploración del catálogo, Popularidad y valoración, y Finanzas de películas.
 
-Consultar **[PENDIENTES_DASHBOARD.md](PENDIENTES_DASHBOARD.md)** para localizar todas las correcciones de cierre. La presentación y su ensayo se preparan fuera de este repositorio; deben incluirse en el paquete final de entrega.
+Se realizaron pruebas de funcionamiento de filtros individuales y combinados, actualización de indicadores y navegación entre páginas. El informe ejecutivo se encuentra finalizado y exportado a PDF, incorporando capturas del dashboard, análisis, conclusiones y recomendaciones. La presentación y su preparación se realizan fuera del repositorio y deben incorporarse al paquete final de entrega.
 
 ## Contenido del proyecto
 
@@ -16,11 +16,11 @@ Consultar **[PENDIENTES_DASHBOARD.md](PENDIENTES_DASHBOARD.md)** para localizar 
 | `data/processed/` | Catálogo preparado, dimensiones, asociaciones, diagnósticos, excepciones, referencias de KPIs y resúmenes exploratorios. |
 | `src/` | `main.py`: limpieza e integración. `referencias_kpis.py`: indicadores de control para once escenarios. `analisis_catalogo.py`: resúmenes y gráficos estáticos. |
 | `notebooks/` | `analisis_catalogo.ipynb`: ejecución del proceso, inspección de calidad, exploración y visualización de resultados. |
-| `dashboard/` | `medidas.dax`: 23 medidas para crear en Power BI. `tema_streamview.json`: tema visual. Aquí se guardará `StreamView.pbix`. |
-| `images/` | Seis gráficos estáticos generados por Python. Aquí se añadirán capturas de Power BI. |
-| `docs/` | Informe ejecutivo y documentación de limpieza, preparación, modelo e implementación. |
+| `dashboard/` | `medidas.dax`: 23 medidas DAX. `tema_streamview.json`: tema visual. `StreamView.pbix`:dashboard interactivo implementado en Power BI.. |
+| `images/` | Gráficos estáticos generados en Python y capturas de las visualizaciones y páginas implementadas en Power BI. |
+| `docs/` | Informe ejecutivo finalizado, documentación de limpieza, preparación, modelo e implementación, y archivos de respaldo. |
 | `requirements.txt` | Dependencias para ejecutar código y notebook. |
-| `PENDIENTES_DASHBOARD.md` | Lista de cierre y ubicación de los marcadores que debe completar el equipo. |
+
 
 `.venv/` es un entorno de desarrollo local, no un entregable. También deben excluirse `.git/`, caches y checkpoints del paquete que se envíe al docente.
 
@@ -63,9 +63,9 @@ jupyter lab notebooks/analisis_catalogo.ipynb
 
 Ejecutar las celdas en orden. El notebook utiliza los mismos scripts y datos que el informe; no contiene una aplicación de dashboard adicional.
 
-## Construcción de Power BI
+## Implementación y reproducción de Power BI
 
-Los CSV ya están generados: la persona que construye el dashboard puede empezar sin ejecutar Python.
+El dashboard fue implementado en Power BI utilizando los seis archivos CSV preparados en Python. Las siguientes instrucciones permiten reproducir su configuración o actualizar el proyecto en otro equipo.
 
 1. Seguir [la guía de construcción](docs/guia_construccion_powerbi.md).
 2. Importar únicamente `catalogo.csv`, `dim_generos.csv`, `contenido_genero.csv`, `dim_paises.csv`, `contenido_pais.csv` y `dim_anio_estreno.csv` desde `data/processed/`.
@@ -75,11 +75,13 @@ Los CSV ya están generados: la persona que construye el dashboard puede empezar
 
 Los CSV usan UTF-8 con BOM, delimitador coma y punto decimal. Importar claves como texto y banderas como valores lógicos; convertir decimales con configuración regional Inglés (Estados Unidos). Registrar la ruta o parámetro de datos del equipo de construcción y comprobar actualización en el PC de entrega.
 
-**Archivo PBIX y ruta de actualización:** pendientes de implementación. Sustituir esta línea por la ubicación final y los pasos para actualizar fuentes al trasladar el proyecto.
+**Archivo PBIX y ruta de actualización:** El dashboard se guarda en `dashboard/StreamView.pbix`. Para actualizar los datos en otro equipo, se deben comprobar las rutas de origen de los seis archivos CSV ubicados en `data/processed/`, ajustar sus conexiones en Power BI si corresponde y ejecutar la actualización de datos.
 
 ## Documentación
 
-- [Informe ejecutivo](docs/informe_ejecutivo.md): diez secciones, análisis y recomendaciones, con marcadores `PB01`–`PB16` para la evidencia pendiente.
+- [Informe ejecutivo](docs/informe_ejecutivo.md): documento final de diez secciones que incluye análisis exploratorio, evidencias del dashboard implementado en Power BI, evaluación crítica, conclusiones y recomendaciones. 
+- [Informe ejecutivo en PDF](docs\informe_ejecutivo_stream_view.pdf)
+- [Informe ejecutivo en PDF](docs\StreamView_Dashboard.pdf): versión estática de las cuatro páginas del dashboard implementado en Power BI.
 - [Criterios de limpieza](docs/criterios_limpieza.md): identidad, duplicados, nulos y restricciones semánticas.
 - [Preparación de datos](docs/preparacion_datos.md): ejecución, tipos y descripción de derivados.
 - [Modelo e indicadores](docs/modelo_indicadores.md): relaciones, medidas, filtros y reglas de interpretación.
@@ -95,6 +97,10 @@ La popularidad es un índice relativo; no son reproducciones. Las valoraciones c
 
 ## Cierre y entrega
 
-Una vez validado el dashboard, completar la lista de pendientes, incorporar capturas y convertir `docs/informe_ejecutivo.md` a `docs/exportaciones/informe_ejecutivo.pdf`. Exportar también un respaldo estático del dashboard, comprobando legibilidad. El PDF no reemplaza la interactividad del PBIX.
+El proyecto cuenta con un dashboard interactivo implementado en Power BI y un informe ejecutivo finalizado, con análisis, visualizaciones, evidencias y conclusiones. Se realizaron pruebas de navegación, filtros individuales y combinados, y actualización de indicadores.
 
-Incluir la presentación o resumen ejecutivo preparado por el equipo en `docs/exportaciones/`. La carpeta de exportaciones se crea cuando existan esos productos. Entregar datos, scripts, notebook, gráficos, documentación, PDF, PBIX y presentación. No incluir el entorno virtual ni archivos de control local.
+El paquete de entrega debe incluir los datos originales y procesados, scripts de Python, notebook de exploración, archivo `dashboard/StreamView.pbix`, medidas DAX, gráficos, documentación y el informe ejecutivo en PDF.
+
+La presentación correspondiente a EP4 se prepara por separado y debe incorporarse cuando esté finalizada. El PDF del informe permite revisar los resultados, pero no reemplaza la interactividad del archivo PBIX.
+
+Antes de entregar, se debe comprobar que los archivos puedan abrirse correctamente y excluir carpetas de desarrollo local como `.venv/`, `.git/`, cachés y checkpoints.

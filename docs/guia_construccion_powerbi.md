@@ -1,12 +1,12 @@
 # Guía de construcción del dashboard en Power BI
 
-## Entrega prevista
+## Alcance de la implementación
+El proyecto cuenta con un dashboard interactivo de cuatro páginas, desarrollado en Power BI y guardado como `dashboard/StreamView.pbix`. No se requiere su publicación en línea para utilizarlo.
 
-Construir un informe de cuatro páginas y guardarlo como `dashboard/StreamView.pbix`. En la evaluación lo llamaremos dashboard; técnicamente este archivo contiene un informe interactivo de Power BI. No se requiere publicar en línea para ejecutar esta guía.
+Este documento conserva las instrucciones técnicas de construcción y las recomendaciones de diseño originales. Algunas funcionalidades complementarias, como determinados botones de navegación o limpieza de filtros, pueden no formar parte de la implementación final.
 
-El archivo PBIX todavía no está construido. Esta guía, los datos y las medidas forman el paquete de implementación para quien lo construya.
-
-## 1. Preparación en el PC de construcción
+## 1. Preparación y reproducción del proyecto
+Los siguientes pasos documentan el procedimiento utilizado como referencia para construir el modelo y permiten reproducirlo en otro equipo. El dashboard final se encuentra disponible en `dashboard/StreamView.pbix`, por lo que no es necesario crearlo nuevamente para consultar sus resultados.
 
 1. Copiar la carpeta del proyecto al PC. Usar los CSV ya preparados en `data/processed/`; no es necesario ejecutar Python para comenzar a construir. Para regenerarlos, consultar `docs/preparacion_datos.md`.
 2. Abrir Power BI Desktop y crear un informe vacío. Importar **solo** `catalogo`, `dim_generos`, `contenido_genero`, `dim_paises`, `contenido_pais` y `dim_anio_estreno`.
@@ -28,6 +28,8 @@ catalogo[title] & " · " & catalogo[type] & " · " & catalogo[content_id]
 Utilizarla como fila de los rankings y como campo de categoría del filtro Top N. Así el visual mantiene una fila por contenido. No aplicar Top N únicamente sobre `title`. En las tablas de detalle incluir también `release_year`, votos y métricas para interpretar el resultado.
 
 ## 2. Diseño común
+
+Esta sección reúne los criterios de diseño utilizados como referencia durante la construcción del dashboard. La distribución y los elementos descritos corresponden a la propuesta original y pueden presentar diferencias respecto de la versión final implementada en Power BI.
 
 Lienzo 16:9, fondo claro y texto oscuro. Usar Segoe UI, títulos de página de 24–28 puntos, valores de tarjetas de 26–32, títulos de visuales de 14–16 y etiquetas de 11–12. Estas medidas son una base; comprobar legibilidad en el equipo de exposición.
 
@@ -115,6 +117,8 @@ Mostrar siempre la cobertura. El botón o segmentador de revisión permite exami
 
 ## 7. Navegación, filtros y estados
 
+Las siguientes instrucciones corresponden a la propuesta original de navegación y manejo de filtros. Algunas funcionalidades complementarias, como el navegador de páginas y el botón «Limpiar filtros», se mantienen documentadas como recomendaciones de implementación y no necesariamente forman parte del dashboard final.
+
 1. Insertar un navegador de páginas con los cuatro nombres definitivos y copiarlo a todas las páginas. Comprobar estado activo y legibilidad. En modo edición de Desktop se prueba con Ctrl + clic.
 2. Crear los cinco segmentadores comunes en Resumen. Copiarlos y activar sincronización y visibilidad en las cuatro páginas. Género, país e idioma en listas desplegables con búsqueda y multiselección; año como rango; tipo con todos / Movie / TV Show.
 3. Revisar Editar interacciones: segmentadores filtran todos los visuales analíticos. Entre gráficos seleccionar **Filtrar**, cuando esté disponible, para una lectura consistente. No usar un resaltado parcial como si fuera el total filtrado.
@@ -123,7 +127,9 @@ Mostrar siempre la cobertura. El botón o segmentador de revisión permite exami
 6. Para tarjetas sin datos, utilizar texto alternativo o una medida de presentación basada en `ISBLANK` si la tarjeta muestra «(En blanco)». Conservar las medidas numéricas originales para gráficos y comprobaciones.
 7. Si `[Total contenidos] = 0`, mostrar un mensaje visible de segmento vacío. Nunca mostrar promedios cero para un universo sin observaciones.
 
-## 8. Orden de implementación
+## 8. Etapas de implementación
+
+La siguiente tabla presenta las etapas definidas para desarrollar el dashboard. Se conserva como referencia del proceso de implementación, incluyendo actividades de configuración, validación y acabado que pueden diferir del alcance final.
 
 | Bloque | Finalización comprobable |
 | --- | --- |
@@ -153,9 +159,9 @@ Completar A y B antes de invertir tiempo en formato avanzado. Añadir después l
 
 Usar `referencia_kpis.csv` para todos los indicadores y `reference_cases.json` para las selecciones exactas. Las selecciones de gráficos deben estar limpias al comparar. La cobertura financiera general es 3.540 / 16.000 = **22,125 %**; con formato de un decimal se muestra **22,1 %**.
 
-Exportar un PDF de las cuatro páginas y revisar legibilidad, cortes, notas y selecciones actuales. El PDF sirve como evidencia estática y respaldo; la demostración de interactividad se realiza con el PBIX. Guardar capturas en `images/` y exportaciones en `docs/exportaciones/` cuando se construya el informe; esos resultados todavía están pendientes.
+El dashboard interactivo se encuentra guardado en `dashboard/StreamView.pbix` y se incorporaron capturas de sus visualizaciones al informe ejecutivo. El informe ejecutivo también fue exportado a PDF como respaldo documental. Este PDF no reemplaza la interactividad del archivo PBIX. La exportación adicional de las cuatro páginas de Power BI a PDF se mantiene como una recomendación opcional.
 
-Antes de entregar a otra persona, registrar en README la ruta o parámetro de las fuentes utilizado y comprobar actualización en su equipo. No introducir rutas absolutas del PC de construcción como requisito fijo para todos.
+La ubicación del archivo PBIX y las instrucciones generales para actualizar las fuentes de datos se encuentran documentadas en el README. Al trasladar el proyecto a otro equipo, se recomienda comprobar las conexiones de los archivos CSV y verificar que la actualización funcione correctamente. Evitar el uso de rutas absolutas específicas de un computador como requisito permanente.
 
 ## Documentación oficial consultada
 

@@ -1,8 +1,8 @@
 # Modelo e indicadores para Power BI
 
-## Modelo acordado
+## Modelo implementado en Power BI
 
-Importar las seis tablas analíticas de `data/processed/` usando exactamente los nombres de tabla indicados abajo. La unidad de análisis es un contenido (`catalogo[content_id]`), no una asociación de género o país.
+El modelo implementado en Power BI utiliza las seis tablas analíticas de `data/processed/`, conservando los nombres indicados a continuación. La unidad de análisis es un contenido (`catalogo[content_id]`), no una asociación de género o país.
 
 | Lado 1 | Lado muchos | Cardinalidad | Dirección de filtro | Activa |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ Para rankings, tablas y dispersión, incluir `content_id` como identificador/det
 
 ## Medidas y decisiones
 
-El archivo `dashboard/medidas.dax` contiene **23 medidas** para crear individualmente en la tabla `catalogo`. Las medidas con `KEEPFILTERS` intersectan condiciones con las selecciones actuales: seleccionar series no debe devolver películas en las tarjetas financieras.
+El archivo `dashboard/medidas.dax` contiene **23 medidas** que fueron incorporadas al modelo de Power BI, utilizando la tabla `catalogo` para su organización. Las medidas con `KEEPFILTERS` intersectan condiciones con las selecciones actuales: seleccionar series no debe devolver películas en las tarjetas financieras.
 
 | Grupo | Indicadores | Formato / interpretación |
 | --- | --- | --- |
@@ -59,7 +59,7 @@ Usar formato porcentaje con un decimal para coberturas y porcentajes; calificaci
 
 Los conteos devuelven cero ante un segmento vacío; promedios, medianas y razones sin denominador devuelven BLANK. Mostrar «Sin datos» en ese caso, sin sustituirlo por cero. En la página financiera mostrar cobertura sobre películas, no sobre todo el catálogo. Si se filtran series, la cobertura financiera queda sin datos.
 
-## Rankings y gráficos previstos
+## Rankings y gráficos del dashboard
 
 - Popularidad: Top 10 por popularidad; conservar tipo, calificación y votos como contexto.
 - Valoración: filtrar `rating_rank_eligible = TRUE`, ordenar por calificación descendente y usar votos como desempate.
@@ -68,7 +68,7 @@ Los conteos devuelven cero ante un segmento vacío; promedios, medianas y razone
 - Estrenos: línea por año con `[Total contenidos]`; su título será «Contenidos por año de estreno», no «Crecimiento de usuarios» ni «Incorporación a la plataforma».
 - Dispersión: popularidad y valoración a nivel de contenido; finanzas a nivel de película válida. Utilizar escala adecuada y mostrar muestra/cobertura.
 
-La selección Top N se realiza en el visual; no se define un ranking global que ignore los filtros. El dashboard será exploratorio. No se incluye un puntaje automático de adquisición o campañas: esas decisiones requieren explicar criterios y limitaciones.
+La selección Top N se realiza en el visual; no se define un ranking global que ignore los filtros. El dashboard tiene un enfoque exploratorio. No se incluye un puntaje automático de adquisición o campañas: esas decisiones requieren explicar criterios y limitaciones.
 
 ## Control de implementación
 
@@ -81,7 +81,7 @@ python src/referencias_kpis.py
 
 Comparar los conteos exactamente y los decimales con la precisión de presentación. `reference_cases.json` identifica las selecciones de cada caso. No importar las referencias como tablas del modelo. Tras cambiar fuentes, ejecutar ambos scripts en ese orden.
 
-La definición queda preparada, pero las medidas DAX todavía deben ejecutarse en el archivo Power BI durante la construcción y validación. La comparación en Python no verifica por sí sola la configuración de relaciones o el comportamiento de DAX.
+Las medidas DAX fueron incorporadas al archivo `dashboard/StreamView.pbix` durante la implementación del dashboard. Se realizaron comprobaciones de filtros, indicadores y navegación entre páginas. Los resultados generados en Python mediante `referencia_kpis.csv` sirven como referencia independiente para contrastar los cálculos del modelo. Esta comparación no sustituye las pruebas de relaciones y comportamiento de las medidas dentro de Power BI.
 
 ## Fundamento técnico
 
